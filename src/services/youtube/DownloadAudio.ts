@@ -1,6 +1,8 @@
 import path from 'path';
 import ffmpeg from 'fluent-ffmpeg';
 
+import { path as ffmpegBinPath } from '@ffmpeg-installer/ffmpeg';
+
 import youtubeDlWrap from '../../config/youtube-dl';
 
 import FileMetadata from '../../utils/FileMetadata';
@@ -11,6 +13,8 @@ interface AudioData extends FileMetadata {
 
 async function download(data: AudioData): Promise<string> {
   console.log(`🔗 Getting stream link of '${data.id}'`);
+
+  console.log(youtubeDlWrap.getBinaryPath());
 
   const rawFileDir = await youtubeDlWrap.execPromise([
     '-g',
@@ -40,10 +44,7 @@ async function download(data: AudioData): Promise<string> {
 
   console.log(`💾 Will be saved in '${outputPath}'`);
 
-  const ffmpegBinPath = process.env.APP_SERVER_FFMPEG_BIN_PATH;
-  if (ffmpegBinPath) {
-    ffmpeg.setFfmpegPath(ffmpegBinPath);
-  }
+  ffmpeg.setFfmpegPath(ffmpegBinPath);
 
   const ffmpegCommand = ffmpeg()
     .input(rawFileDir.trim())

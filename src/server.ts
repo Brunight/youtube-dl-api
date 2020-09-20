@@ -1,4 +1,5 @@
 import 'dotenv/config';
+import fs from 'fs';
 import path, { resolve } from 'path';
 import cors from 'cors';
 import express, { Request, Response } from 'express';
@@ -7,6 +8,7 @@ import multer from 'multer';
 import uploadMusicConfig, { tmpFilesFolder } from './config/uploadMusic';
 import uploadCoverConfig, { tmpCoversFolder } from './config/uploadCover';
 import downloadAudio from './services/youtube/DownloadAudio';
+import downloadBinarie from './services/youtube/DownloadBinarie';
 import getInfo from './services/youtube/GetInfo';
 import readFileMetadata from './services/ReadFileMetadata';
 
@@ -89,6 +91,7 @@ app.post('/shutdown', async (request: Request, response: Response) => {
   return process.exit();
 });
 
-app.listen(3333, () => {
+app.listen(3333, async () => {
+  await downloadBinarie();
   console.log('🚀 Server started on port 3333!');
 });

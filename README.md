@@ -1,13 +1,18 @@
 # 🎈 About
-This is a REST API for converting Youtube videos to mp3 files with metadata (tags) and album cover art using **youtube-dl** and **ffmpeg**. Please use alongside with [@brunight/youtube-dl-web](https://github.com/brunight/youtube-dl-web).
+This is a REST API for converting Youtube videos to mp3 files with metadata (tags) and album cover art using **[youtube-dl](https://youtube-dl.org)** and **[ffmpeg](https://ffmpeg.org)**. Please use alongside with [@brunight/youtube-dl-web](https://github.com/brunight/youtube-dl-web).
 
 # 📝 Requirements
-- Windows or Linux OS;
 - NodeJS and NPM or Yarn;
-- [youtube-dl](https://youtube-dl.org) ([Github](https://github.com/ytdl-org/youtube-dl));
-- [ffmpeg 4.0+](https://ffmpeg.org) ([Github](https://github.com/ffmpeg/ffmpeg));
+
+Linux and MacOS:
+- [youtube-dl](http://ytdl-org.github.io/youtube-dl/download.html);
+- [Python](https://www.python.org/downloads/);
 
 # 🛠 Installation
+In Windows, since youtube-dl does not need Python to work, the API will try to download it and save to bin/youtube-dl.exe.
+
+In Linux and MacOS, you'll need to manually install Python version 2.6, 2.7, or 3.2+ and youtube-dl. Follow the instructions in the links above. If you already have youtube-dl binarie installed, see [Configuration](#configuration) to know how to set it.
+
 With npm do:
 ```bash
 npm install
@@ -18,7 +23,7 @@ yarn install
 ```
 
 # ⚙ Configuration
-You can set the directories where files will be generated and the path for youtube-dl and ffmpeg binaries with Environment Variables. Create a file named **.env** in project root and put there your configuration. For examples, check **.env.example**. If no temp directory is provided, it'll be created at project root.
+You can set the directories where files will be generated and the path for youtube-dl binarie with Environment Variables. Create a file named **.env** in project root and put there your configuration. For examples, check **.env.example**. If no temp directory is provided, it'll be created at project root.
 
 # 🚀 Usage
 To start with npm do:
