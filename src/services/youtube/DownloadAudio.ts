@@ -66,8 +66,12 @@ async function download(data: AudioData): Promise<string> {
   if (data.startTime) {
     ffmpegCommand.seekInput(data.startTime);
   }
-  if (data.duration) {
-    ffmpegCommand.setDuration(data.duration);
+  if (data.endTime) {
+    const { duration } = data;
+    if (!duration) {
+      throw new Error('Duration should also be present.');
+    }
+    ffmpegCommand.setDuration(duration);
   }
 
   if (data.cover && data.cover !== '') {
