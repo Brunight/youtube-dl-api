@@ -22,7 +22,7 @@ Or with yarn do:
 yarn install
 ```
 
-# ⚙ Configuration
+# ⚙ Configuration <a name="configuration"></a>
 You can set the directories where files will be generated and the path for youtube-dl binarie with Environment Variables. Create a file named **.env** in project root and put there your configuration. For examples, check **.env.example**. If no temp directory is provided, it'll be created at project root.
 
 # 🚀 Usage
